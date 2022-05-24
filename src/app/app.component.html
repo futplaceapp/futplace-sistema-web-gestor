@@ -1,0 +1,45 @@
+<div *ngIf="!exibirHeader()">
+    <app-login></app-login>
+</div>
+
+<div *ngIf="exibirHeader()">
+   <!-- <mat-toolbar class="mat-elevation-z8">
+        <button mat-icon-button *ngIf=" sidenav.mode === 'over'" (click)="sidenav.toggle()">
+      <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+      <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+    </button>
+    </mat-toolbar> 
+
+    <mat-sidenav-container>
+        <mat-sidenav #sidenav class="mat-elevation-z8" >
+            <img width="45" src="../assets/images/futplace-icone.png">
+            <h4 class="name">Futplace Admin</h4>
+
+            <mat-divider></mat-divider>
+
+            <button (click)="sidenav.close()" mat-button class="menu-button" routerLink="/listar-parceiro">
+            <mat-icon>home</mat-icon>
+            <span>Início</span>
+            </button>
+
+            <button (click)="sidenav.close()" routerLink="/cadastro-parceiro" mat-button class="menu-button">
+            <mat-icon>person</mat-icon>
+            <span>Novo Parceiro</span>
+            </button>
+
+            <mat-divider></mat-divider>
+
+            <button (click)="sair()" mat-button class="menu-button">
+             <mat-icon>close</mat-icon>
+            <span>Sair</span>
+            </button>
+        </mat-sidenav>
+        <mat-sidenav-content>
+  
+        </mat-sidenav-content>
+    </mat-sidenav-container>-->
+
+    <div class="content">
+        <router-outlet></router-outlet>
+    </div>
+</div>

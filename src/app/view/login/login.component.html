@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+
+<body>
+    <div class="container-login">
+        <div class="img-box">
+            <img src="./../../../assets/images/society-login.png">
+        </div>
+        <div class="content-box">
+            <div class="form-box">
+                <div class="logo logoWhite">
+                    <img src="./../../../assets/images/logoWhite.png">
+                </div>
+                <h2>Seja bem-vindo </h2>
+                <p>Preencha os dados abaixo para acessar a sua conta.</p>
+                <form>
+
+                    <div class="input-box">
+                        <span>Usuário</span>
+                        <input ([ngModel])="usuario.usuario" (change)="changeUsuario($event)" placeholder="Digite aqui seu usuário.">
+                    </div>
+
+                    <div class="input-box">
+                        <span>Senha</span>
+                        <input minlength="8" ([ngModel])="usuario.senha" (change)="changeSenha($event)" [type]="passwordType" placeholder="Digite aqui sua senha.">
+                    </div>
+
+                    <!--<div class="remember">
+                        <label>
+                               <input type="checkbox"> Remember me
+                           </label>
+                        <a href="#">Esqueceu a senha?</a>
+                    </div>-->
+                </form>
+                <div class="input-box">
+                    <button (click)="validarRealizarLogin()">Entrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
