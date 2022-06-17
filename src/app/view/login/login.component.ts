@@ -4,6 +4,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 import { SnackBarUtil } from "src/app/util/SnackBarUtil";
 import { MensagensUtil } from "src/app/util/MensagensUtil";
 import { Router } from "@angular/router";
+import { Login } from "src/app/model/Login";
 
 @Component({
   selector: "app-login",
@@ -41,12 +42,25 @@ export class LoginComponent implements OnInit {
     if (response.error) {
       this.snackBarUtil?.mensagemErro(response.error.mensagem);
     } else if (response.perfil == "PARCEIRO") {
+      this.storeCredentials("usuario", response);
       this.irParaHome();
     } else {
       this.snackBarUtil?.mensagemErro(
         "Você não tem permissão para acessar o sistema."
       );
+      return;
     }
+  }
+
+  private storeCredentials(key: string, value: any) {
+    sessionStorage.setItem(key, JSON.stringify(value));
+  }
+
+  private fillLoginData(response: any): Login {
+    let login = {} as Login;
+    login.idUsuario = response.idUsuario;
+    login.perfil = response.perfil;
+    return login;
   }
 
   public changeUsuario(event: any): void {
@@ -60,5 +74,4 @@ export class LoginComponent implements OnInit {
   private irParaHome() {
     this.router.navigate(["/home"]);
   }
-
 }

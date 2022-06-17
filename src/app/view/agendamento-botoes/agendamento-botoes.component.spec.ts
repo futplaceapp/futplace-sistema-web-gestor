@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DialogConfirmacaoComponent } from './dialog-confirmacao.component';
+import { AgendamentoBotoesComponent } from './agendamento-botoes.component';
 
-describe('DialogConfirmacaoComponent', () => {
-  let component: DialogConfirmacaoComponent;
-  let fixture: ComponentFixture<DialogConfirmacaoComponent>;
+describe('AgendamentoBotoesComponent', () => {
+  let component: AgendamentoBotoesComponent;
+  let fixture: ComponentFixture<AgendamentoBotoesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DialogConfirmacaoComponent ]
+      declarations: [ AgendamentoBotoesComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DialogConfirmacaoComponent);
+    fixture = TestBed.createComponent(AgendamentoBotoesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

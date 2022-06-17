@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://futplace-api.herokuapp.com/'
+  apiUrl: 'https://futplace-api-java.herokuapp.com/'
 };
 
 /*

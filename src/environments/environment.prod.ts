@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://futplace-api.herokuapp.com/'
+  apiUrl: 'https://futplace-api-java.herokuapp.com/'
 };

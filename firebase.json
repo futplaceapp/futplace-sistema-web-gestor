@@ -1,16 +1,10 @@
 {
   "hosting": {
-    "public": "dist/futplace-sistema-web",
+    "public": "dist/futplace-sistem-web",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
-    ],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
     ]
   }
 }

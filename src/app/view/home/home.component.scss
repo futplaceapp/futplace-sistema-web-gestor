@@ -1,138 +1,24 @@
-*{
-    font-size: 12px;
+.home {
+  background-color: #4e4d4f;
 }
 
-body{
-    background: #424242;
+.mat-drawer {
+  width: 18%;
+  background-color: #252525;
+  color: white;
 }
 
 .container {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    margin: 0;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
 }
 
-.pull-right{
-    margin-left: auto; 
-    margin-right: 0;
-}
-
-.botao-header{
- background: #26C602;
- color:#fff;
- border: none;
- padding: 5px 5px;
- padding-bottom: 5px;
- margin:15px;
- font-size: 17px;
- width:230px;  
-height:50px;
-border-radius: 5px;
-}
-
-.modal {
-    background: #fff;
-    border-top: 8px #26C602 solid;
-    box-shadow: 0 2px 8px #333;
-    min-width: 320px;
-    position: fixed;
-    left: 50%;
-    padding: 24px;
-    top: 50%;
-    overflow-y: scroll;
-    transform: translate(-50%, -50%);
-    z-index: 11;
-    max-height: calc(120vh - 210px);
-    overflow-y: auto;
- 
-    
-  }
-
-  .overlay {
-    background: #000;
-    height: 100vh;
-    left: 0;
-    opacity: 0.5;
-    position: fixed;
-    top: 0;
-    width: 100vw;
-    z-index: 10;
-  }
-
-  .input-box input {
-    width: 320px;
-    padding: 10px;
-    outline: none;
-    font-size: 13px;
-    color: #32324f;
-    border-radius: 5px;
-    border-color: #26C601 ;
-    border-width: thin;
-    box-shadow: none;
-    margin-top:3px;
-}
-
-span, .titulo-agendamento{
-    color: #4E4D4F;
-    font-weight: 400;
-}
-
-.titulo-agendamento{
-    font-weight: 500;
-    font-size: 18px;
-}
-
-.sub-titulo-agendamento{
-    color: #7B7B7B;
-    font-size: 12px;
-    font-weight: normal;
-
-}
-.check-campo{
-    margin: 5px;
-}
- 
-.botao-confirmar{
-    background: #26C602;
-    color:#fff;
-    border: none;
-    padding: 5px 5px;
-    width: 342px;
-    padding-bottom: 5px;
-    border-radius: 5px;
-    height:35px;
-}
-
-.botao-cancelar{
-    background: #fff;
-    color: #32324f;
-    border-color: #32324f;
-    padding: 5px 5px;
-    width: 342px;
-    padding-bottom: 5px;
-    border-width: thin;
-    border-radius: 5px;
-    box-shadow: none;
-    height:35px;
-}
-
-::ng-deep  .mat-select {
-    outline: none;
-    font-size: 13px;
-    border-radius: 5px;
-    border: #26C601 1px solid;
-    color: #32324f;
-    height:35px;
-    width: 20px;
-}
-
-::ng-deep .mat-icon-button{
- color: #26C601;   
-}
-
-.teste{
-    border: #26C601 1px solid;
-    height:35px;
+.loading {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 30px;
+  height: 30px;
 }

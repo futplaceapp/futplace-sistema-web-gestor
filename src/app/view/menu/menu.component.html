@@ -1,0 +1,30 @@
+<div class="info-futplace">
+  <img src="./../../../assets/images/logoWhite.png" />
+  <div class="info-usuario">
+    <img src="./../../../assets/images/society-login.png" />
+    <p>{{userData1.nomeParceiro}} <br>{{userData1.bairro}}</p>
+  </div>
+</div>
+<mat-nav-list class="header">
+  <a mat-list-item [routerLink]="'/accounts'"
+    ><mat-icon>home</mat-icon> Inicio
+  </a>
+  <a mat-list-item [routerLink]="'/create-account'"
+    ><mat-icon>assessment</mat-icon> Relatório
+  </a>
+  <a mat-list-item [routerLink]="'/contacts'"
+    ><mat-icon>live_help</mat-icon> Tutorial
+  </a>
+  <a mat-list-item [routerLink]="'/create-contact'"
+    ><mat-icon>settings</mat-icon> Configurações
+  </a>
+</mat-nav-list>
+
+<mat-nav-list class="footer">
+  <a mat-list-item [routerLink]="'/accounts'"
+    ><mat-icon>headset_mic</mat-icon> Ajuda
+  </a>
+  <a mat-list-item [routerLink]="'/create-account'"
+    ><mat-icon>exit_to_app</mat-icon> Sair
+  </a>
+</mat-nav-list>

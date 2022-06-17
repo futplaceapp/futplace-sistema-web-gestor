@@ -1,24 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from "@angular/core";
+import { ParceiroService } from "src/app/service/parceiro-service";
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: "app-home",
+  templateUrl: "./home.component.html",
+  styleUrls: ["./home.component.scss"],
 })
 export class HomeComponent implements OnInit {
+  parceiroLogado: any = {};
+  usuario: any = {};
+  parceiro: any;
+  parceiros: any[] = new Array();
+  listaCampo: any;
+  exibirModalNovoAgendamento: boolean = false;
 
-  exibirModalNovoAgendamento: boolean= false;
+  constructor(private parceiroService: ParceiroService, private changeDetector : ChangeDetectorRef) {}
 
-
-  constructor() { }
-
-  ngOnInit(): void {
+  async ngOnInit() {
+    this.usuario = JSON.parse(sessionStorage.usuario);
+    this.parceiros = await this.parceiroService.listaParceiros();
+    this.parceiroLogado = await this.parceiros.find((parceiro) =>
+      this.verificaUsuario(parceiro, this.usuario.idUsuario)
+    );
+    this.changeDetector.detectChanges();
+    console.log(this.parceiroLogado);
   }
 
-  public exibirModalAgendamento():void{
-    this.exibirModalNovoAgendamento= this.exibirModalNovoAgendamento? false: true;
+  verificaUsuario(parceiro: any, idUsuario: string) {
+    return parceiro.id === idUsuario;
   }
 
-
-
+  alterandoStatusModel(): void {
+    this.exibirModalNovoAgendamento = this.exibirModalNovoAgendamento
+      ? false
+      : true;
+  }
 }

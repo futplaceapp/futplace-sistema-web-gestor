@@ -4,127 +4,34 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
-    <title>Início</title>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.0.7/css/all.css"
+    />
   </head>
 
   <body>
-    <div class="container">
-      <div class="pull-right">
-          <button (click)="exibirModalAgendamento()" class="botao-header" type="submit"> <i class="fas fa-plus"></i> Novo agendamento  </button>
-          <button class="botao-header" type="submit"> <i class="far fa-calendar"></i> Horários disponíveis  </button>
-      </div>
-    
-      <ng-container *ngIf="exibirModalNovoAgendamento">
-        <div class="modal">
-         <p  (click)="exibirModalAgendamento()" style="float: right;">X 
-         <p class="titulo-agendamento">Novo agendamento<br/>
-          <span class="sub-titulo-agendamento">Preencha os dados abaixo para criar um novo agendamento.</span>
-         </p>
-
-          <table>
-            <tr>
-              <td>
-                <div class="input-box">
-                  <span>Nome</span><br/>
-                  <input> 
-              </div>
-              </td>
-            </tr>
- 
-            <tr>
-              <td>
-                <div class="input-box">
-                  <span>Telefone - </span><span style="color: #AEAEAE; font-weight:normal;"><i>opcional</i></span><br/>
-                  <input placeholder="(__) ______-____"> 
-              </div>
-              </td>
-            </tr>
-       
-            <tr>
-              <td>
-                <div class="input-box">
-                  <span>Campo</span><br/>
-                  <mat-radio-group>
-                    <mat-radio-button class="check-campo" value="after">Campo 1</mat-radio-button><br/>
-                    <mat-radio-button class="check-campo" value="before">Campo 2</mat-radio-button> <br/>
-                    <mat-radio-button class="check-campo" value="before">Campo 3</mat-radio-button>
-                  </mat-radio-group>
-              </div>
-              </td>
-            </tr>
-   
-            <tr>
-              <td>
-                <div class="input-box">
-                  <span>Data do agendamento</span><br/>
-                    <input placeholder="dd/mm/aaaa" style="width: 280px;" matInput [matDatepicker]="picker">
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-              </div>
-              </td>
-            </tr> 
-            
-            <tr>
-              <td>
-                <div class="input-box">
-                  <span>Duração</span><br/>
-                  <mat-radio-group>
-                    <mat-radio-button class="check-campo" value="after">1h:30min</mat-radio-button> <br/>
-                    <mat-radio-button class="check-campo" value="before">2h</mat-radio-button> <br/>
-                    <mat-radio-button class="check-campo" value="before">2h:30min</mat-radio-button>
-                  </mat-radio-group>
-              </div>
-              </td>
-            </tr>
-
-            <tr>
-              <td>
-                <div class="input-box">
-                  <span>Tipo de reserva</span><br/>
-                  <mat-radio-group>
-                    <mat-radio-button class="check-campo" value="after"> Diária</mat-radio-button> <br/>
-                    <mat-radio-button class="check-campo" value="before">Mensal</mat-radio-button><br/>
-                    <mat-radio-button class="check-campo" value="before">Escolinha</mat-radio-button>
-                  </mat-radio-group>
-              </div>
-              </td>
-            </tr>
-  
-            <tr>
-              <td style="width:320px;"> 
-                <div class="input-box">
-                  <span>Horário</span><br/>
-                  <mat-select> 
-                    <mat-option value="08:00">08:00</mat-option>
-                  </mat-select>
-              </div>
-              </td>
-            </tr>
-        
-            <tr>
-              <td>
-                <div class="input-box">
-                  <span>Valor da reserva - </span><span style="color: #AEAEAE; font-weight:normal;"><i>opcional</i></span><br/>
-                  <input placeholder="R$ ___"> 
-              </div>
-              </td>
-            </tr>
-          <br/>
-            <tr>
-              <td>
-                <button class="botao-confirmar" type="submit">   Confirmar  </button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <button (click)="exibirModalAgendamento()" class="botao-cancelar" type="submit">   Cancelar  </button>
-              </td>
-            </tr>
-          </table>
+    <mat-spinner class="loading"></mat-spinner>
+    <mat-drawer-container class="home">
+      <mat-drawer mode="side" opened>
+        <app-menu [userData1]="parceiroLogado"></app-menu>
+      </mat-drawer>
+      <mat-drawer-content>
+        <div class="container">
+          <app-agendamento-botoes
+            (eventosAgendamentoBotoes)="alterandoStatusModel()"
+          ></app-agendamento-botoes>
+          <app-agendamento-pendente></app-agendamento-pendente>
+          <app-agendamento-agendado
+            [userData2]="parceiroLogado"
+          ></app-agendamento-agendado>
+          <app-novo-agendamento
+            [userData3]="parceiroLogado"
+            *ngIf="exibirModalNovoAgendamento"
+            (eventosNovoAgendamento)="alterandoStatusModel()"
+          ></app-novo-agendamento>
         </div>
-        <div class="overlay"></div>
-      </ng-container>
-   </div>
+      </mat-drawer-content>
+    </mat-drawer-container>
   </body>
 </html>
