@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/futplace-sistem-web",
+    "public": "dist/futplace-sistema-web",
     "ignore": [
       "firebase.json",
       "**/.*",
