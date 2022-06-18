@@ -2,29 +2,30 @@
   <img src="./../../../assets/images/logoWhite.png" />
   <div class="info-usuario">
     <img src="./../../../assets/images/society-login.png" />
-    <p>{{userData1.nomeParceiro}} <br>{{userData1.bairro}}</p>
+    <dl>
+      <dt class="nomeParceiro">{{ userData1.nomeParceiro }}</dt>
+      <dt class="nomeBairro">{{ userData1.bairro }}</dt>
+    </dl>
   </div>
 </div>
 <mat-nav-list class="header">
-  <a mat-list-item [routerLink]="'/accounts'"
-    ><mat-icon>home</mat-icon> Inicio
-  </a>
-  <a mat-list-item [routerLink]="'/create-account'"
+  <a mat-list-item [routerLink]="'/home'"><mat-icon>home</mat-icon> Inicio </a>
+  <a mat-list-item (click)="mensagemEmConstrucao()"
     ><mat-icon>assessment</mat-icon> Relatório
   </a>
-  <a mat-list-item [routerLink]="'/contacts'"
+  <a mat-list-item (click)="mensagemEmConstrucao()"
     ><mat-icon>live_help</mat-icon> Tutorial
   </a>
-  <a mat-list-item [routerLink]="'/create-contact'"
+  <a mat-list-item (click)="mensagemEmConstrucao()"
     ><mat-icon>settings</mat-icon> Configurações
   </a>
 </mat-nav-list>
 
 <mat-nav-list class="footer">
-  <a mat-list-item [routerLink]="'/accounts'"
+  <a mat-list-item (click)="mensagemEmConstrucao()"
     ><mat-icon>headset_mic</mat-icon> Ajuda
   </a>
-  <a mat-list-item [routerLink]="'/create-account'"
+  <a mat-list-item [routerLink]="'/login'"
     ><mat-icon>exit_to_app</mat-icon> Sair
   </a>
 </mat-nav-list>

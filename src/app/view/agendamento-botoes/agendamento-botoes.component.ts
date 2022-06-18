@@ -1,4 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { MatSnackBar } from "@angular/material/snack-bar";
+import { MensagensUtil } from "src/app/util/MensagensUtil";
+import { SnackBarUtil } from "src/app/util/SnackBarUtil";
 
 @Component({
   selector: "app-agendamento-botoes",
@@ -7,14 +10,21 @@ import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 })
 export class AgendamentoBotoesComponent implements OnInit {
 
+  snackBarUtil: SnackBarUtil | undefined;
   @Output() eventosAgendamentoBotoes = new EventEmitter<boolean>();
 
-  constructor() {}
+  constructor(private snackBar: MatSnackBar) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.snackBarUtil = new SnackBarUtil(this.snackBar);
+  }
 
   exibirModalAgendamento() {
     this.eventosAgendamentoBotoes.emit(true);
   }
-  
+
+  mensagemEmConstrucao(){
+    this.snackBarUtil?.mensagemAlerta(MensagensUtil.EM_CONSTRUCAO);
+  }
+
 }
