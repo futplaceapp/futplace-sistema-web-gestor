@@ -1,4 +1,4 @@
 export interface Parceiro {
-    nomeParceiro : string;
-    bairro : string;
+  nome: string;
+  bairro: string;
 }

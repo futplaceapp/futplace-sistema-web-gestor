@@ -12,7 +12,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 export class MenuComponent implements OnInit {
 
   snackBarUtil: SnackBarUtil | undefined;
-  @Input() userData1 : Parceiro = {"nomeParceiro" : "ARENA DBV", "bairro" : "Pina"};
+  @Input() userData1 : Parceiro = {"nome" : "ARENA DBV", "bairro" : "Pina"};
 
   constructor(private snackBar: MatSnackBar) { }
 

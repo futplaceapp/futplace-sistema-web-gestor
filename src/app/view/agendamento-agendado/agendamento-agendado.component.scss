@@ -2,6 +2,7 @@
   width: 100%;
   margin-left: 5%;
   margin-top: 2%;
+  position: relative;
 }
 
 .agendados h1 {
@@ -21,4 +22,18 @@
   font-weight: bold;
 }
 
+.agendados .calendario {
+  position: fixed;
+  bottom: 39%;
+  right: 4%;
+  font-size: 18px;
+  z-index: 2;
+}
 
+.calendario mat-label {
+  color: white;
+}
+
+::ng-deep .mat-button-wrapper {
+  color: white;
+}
