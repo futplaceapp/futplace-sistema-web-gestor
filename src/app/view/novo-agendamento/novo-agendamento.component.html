@@ -10,128 +10,159 @@
   <table>
     <tr>
       <td>
-        <div class="input-box">
-          <span>Nome</span><br />
-          <input />
-        </div>
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        <div class="input-box">
-          <span>Telefone - </span
-          ><span style="color: #aeaeae; font-weight: normal"
-            ><i>opcional</i></span
-          ><br />
-          <input placeholder="(__) ______-____" />
-        </div>
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        <div class="input-box">
-          <span>Campo</span><br />
-          <mat-radio-group>
-            <mat-radio-button
-              *ngFor="let campo of listaCampo"
-              class="check-campo"
-              [value]="campo"
-              >{{ campo.nome }}</mat-radio-button
-            >
-            <br />
-          </mat-radio-group>
-        </div>
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        <div class="input-box">
-          <span>Data do agendamento</span><br />
+        <mat-label>Nome</mat-label>
+        <mat-form-field class="form" appearance="outline">
           <input
-            placeholder="dd/mm/aaaa"
-            style="width: 280px"
             matInput
-            [matDatepicker]="picker"
+            type="text"
+            placeholder="Nome do Cliente"
+            [(ngModel)]="nome"
           />
-          <mat-datepicker-toggle
-            matSuffix
-            [for]="picker"
-          ></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </div>
+        </mat-form-field>
       </td>
     </tr>
 
     <tr>
       <td>
-        <div class="input-box">
-          <span>Duração</span><br />
-          <mat-radio-group>
-            <mat-radio-button class="check-campo" value="after"
-              >1h:30min</mat-radio-button
-            >
-            <br />
-            <mat-radio-button class="check-campo" value="before"
-              >2h</mat-radio-button
-            >
-            <br />
-            <mat-radio-button class="check-campo" value="before"
-              >2h:30min</mat-radio-button
-            >
-          </mat-radio-group>
-        </div>
+        <mat-label>Telefone</mat-label>
+        <mat-form-field class="form" appearance="outline">
+          <input
+            matInput
+            type="text"
+            mask="(00) 00000-0000"
+            placeholder="Telefone"
+            [(ngModel)]="telefone"
+          />
+        </mat-form-field>
       </td>
     </tr>
 
     <tr>
-      <td style="width: 320px">
-        <div class="input-box">
-          <span>Horário</span><br />
-          <mat-select>
-            <mat-option value="08:00">08:00</mat-option>
+      <td>
+        <mat-label>Campo</mat-label>
+        <br />
+        <mat-radio-group
+          aria-placeholder="Campo"
+          [(ngModel)]="campoSelecionado"
+        >
+          <mat-radio-button
+            *ngFor="let campo of listaCampo"
+            class="check-campo"
+            [value]="campo"
+            >{{ campo.nome }}</mat-radio-button
+          >
+        </mat-radio-group>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <br />
+        <mat-label>Data do agendamento</mat-label>
+        <mat-form-field class="form" appearance="outline">
+          <input
+            matInput
+            [matDatepicker]="dp3"
+            disabled
+            [(ngModel)]="dataAgendamento"
+          />
+          <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+          <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+        </mat-form-field>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <mat-label>Duração</mat-label>
+        <br />
+        <mat-radio-group aria-placeholder="Duração" [(ngModel)]="duracao">
+          <mat-radio-button
+            *ngFor="let duracao of listaDuracao"
+            class="check-campo"
+            [value]="duracao"
+            >{{ duracao }}</mat-radio-button
+          >
+          <br />
+        </mat-radio-group>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <mat-label>Tipo de Reserva</mat-label>
+        <br />
+        <mat-radio-group aria-placeholder="Duração" [(ngModel)]="tipoReserva">
+          <mat-radio-button
+            *ngFor="let tipoReserva of listaTipoReserva"
+            class="check-campo"
+            [value]="tipoReserva"
+            >{{ tipoReserva.tipo }}</mat-radio-button
+          >
+          <br />
+        </mat-radio-group>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <br />
+        <button
+          [disabled]="checkCamposHorarios"
+          (click)="verificarHorarioDisponiveis()"
+          class="form"
+          mat-flat-button
+          color="primary"
+        >
+          Verificar Horários Disponíveis
+        </button>
+      </td>
+    </tr>
+
+    <tr>
+      <td *ngIf="!this.horariosDisponivel">
+        <br />
+        <mat-label>Horários</mat-label>
+        <mat-form-field class="form" appearance="outline">
+          <mat-select
+            [(value)]="horarioSelecionado"
+            [disabled]="horariosDisponivel"
+            (selectionChange)="onChangeHorario()"
+          >
+            <mat-option *ngFor="let horario of listaHorarios" [value]="horario">
+              {{ horario }}
+            </mat-option>
           </mat-select>
-        </div>
+        </mat-form-field>
       </td>
     </tr>
 
     <tr>
-      <td>
-        <div class="input-box">
-          <span>Tipo de reserva</span><br />
-          <mat-radio-group>
-            <mat-radio-button class="check-campo" value="after">
-              Diária</mat-radio-button
-            >
-            <br />
-            <mat-radio-button class="check-campo" value="before"
-              >Mensal</mat-radio-button
-            ><br />
-            <mat-radio-button class="check-campo" value="before"
-              >Escolinha</mat-radio-button
-            >
-          </mat-radio-group>
-        </div>
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        <div class="input-box">
-          <span>Valor da reserva - </span
-          ><span style="color: #aeaeae; font-weight: normal"
-            ><i>opcional</i></span
-          ><br />
-          <input placeholder="R$ ___" />
-        </div>
+      <td *ngIf="!this.horariosDisponivel">
+        <mat-label>Valor da reserva</mat-label>
+        <mat-form-field class="form" appearance="outline">
+          <input
+            matInput
+            type="text"
+            currencyMask
+            [(ngModel)]="valorReserva"
+          />
+          <mat-label><i>opcional</i></mat-label>
+        </mat-form-field>
       </td>
     </tr>
     <br />
     <tr>
-      <td>
-        <button class="botao-confirmar" type="submit">Confirmar</button>
+      <td *ngIf="!this.horariosDisponivel">
+        <button
+          [disabled]="checkCamposConfirmar"
+          class="form"
+          mat-flat-button
+          color="primary"
+          (click)="cadastrarAgendamento()"
+        >
+          Confirmar
+        </button>
       </td>
     </tr>
     <tr>

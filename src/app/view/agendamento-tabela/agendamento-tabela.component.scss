@@ -15,12 +15,61 @@ table {
 }
 
 th {
-  background-color: #4e4d4f;
+  background-color: #595959;
   color: white;
+  text-align: center;
 }
 
 td {
   background-color: #252525;
+  color: white;
+  text-align: center;
+}
+
+.status-confirmado {
+  color: #26c600;
+}
+
+.status-cancelado {
+  color: #ca1714;
+}
+
+.status-confirmado .div-teste {
+  width: 85px;
+  height: 20px;
+  background-color: #def8e0;
+  border-radius: 10px;
+}
+
+.status-cancelado .div-teste {
+  width: 85px;
+  height: 20px;
+  background-color: #f8dede;
+  border-radius: 10px;
+}
+
+.sem-agendamentos {
+  text-align: center;
+  margin-right: 10%;
+}
+
+.sem-agendamentos h1 {
+  margin-top: 10%;
+}
+
+.btn-deletar {
+  background-color: #252525;
+  color: white;
+  height: 40px;
+  width: 50px;
+  text-align: center;
+}
+
+.btn-deletar .mat-icon {
+  color: red;
+}
+
+.btn-editar {
   color: white;
 }
 

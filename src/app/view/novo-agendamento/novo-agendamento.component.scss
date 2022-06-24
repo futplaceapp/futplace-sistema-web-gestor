@@ -19,6 +19,15 @@ body {
   margin-right: 0;
 }
 
+.form {
+  width: 100%;
+}
+
+.form .mat-select {
+  border: white;
+  height: 35%;
+}
+
 .botao-header {
   background: #26c602;
   color: #fff;
@@ -88,6 +97,7 @@ span,
   font-size: 12px;
   font-weight: normal;
 }
+
 .check-campo {
   margin: 5px;
 }
@@ -113,24 +123,5 @@ span,
   border-width: thin;
   border-radius: 5px;
   box-shadow: none;
-  height: 35px;
-}
-
-::ng-deep .mat-select {
-  outline: none;
-  font-size: 13px;
-  border-radius: 5px;
-  border: #26c601 1px solid;
-  color: #32324f;
-  height: 35px;
-  width: 20px;
-}
-
-::ng-deep .mat-icon-button {
-  color: #26c601;
-}
-
-.teste {
-  border: #26c601 1px solid;
   height: 35px;
 }

@@ -56,15 +56,14 @@ const ELEMENT_DATA_PENDENTES: AgendamentoPendentes[] = [
 export class AgendamentoPendenteComponent implements OnInit {
   dataSource = ELEMENT_DATA;
   columnsToDisplay = [
-    ".",
+    "Id",
     "Nome",
     "Campo",
-    "Data",
     "Dia",
-    "Horário",
-    "Frequência",
-    "Canal",
-    "Ações",
+    "Data",
+    "Horario",
+    "Frequencia",
+    "Acoes",
   ];
   expandedElement: AgendamentoPendente | null | undefined;
 
@@ -77,13 +76,11 @@ export interface AgendamentoPendente {
   Id: number;
   Nome: string;
   Campo: string;
-  Data: string;
   Dia: string;
-  Horário: string;
-  Frequência: string;
-  Canal: string;
-  Telefone: string,
-  ValorReserva: string
+  Data: string;
+  Horario: string;
+  Frequencia: string;
+  Acoes: string;
 }
 
 const ELEMENT_DATA: AgendamentoPendente[] = [
@@ -91,24 +88,20 @@ const ELEMENT_DATA: AgendamentoPendente[] = [
     Id: 1,
     Nome: "Tubarões",
     Campo: "3",
-    Data: "16/03/2022",
     Dia: "Segunda",
-    Horário: "16:30 - 18:00",
-    Canal: "Manual",
-    Frequência: "Diária",
-    Telefone : "(81) 91234-1234",
-    ValorReserva : "350"
+    Data: "12/02/2022",
+    Horario: "10:00 - 12:00",
+    Frequencia: "Diaria",
+    Acoes: "",
   },
   {
     Id: 2,
-    Nome: "Tubarões",
-    Campo: "3",
-    Data: "16/03/2022",
-    Dia: "Terça",
-    Horário: "16:30 - 18:00",
-    Canal: "Mobile",
-    Frequência: `Mensal`,
-    Telefone : "(81) 91234-1234",
-    ValorReserva : "250"
+    Nome: "Peixes",
+    Campo: "2",
+    Dia: "Quarta",
+    Data: "15/02/2022",
+    Horario: "14:00 - 16:00",
+    Frequencia: "Mensal",
+    Acoes: "",
   },
 ];

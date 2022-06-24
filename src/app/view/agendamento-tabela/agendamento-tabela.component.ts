@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import {
   animate,
   state,
@@ -23,25 +23,34 @@ import {
   ],
 })
 export class AgendamentoTabelaComponent implements OnInit {
+  @Input() listaAgendamentos: any[] | undefined;
+  possuiDados: boolean = false;
+
   campos: any;
   dataSource = ELEMENT_DATA;
   columnsToDisplay = [
-    ".",
+    "Id",
     "Status",
     "Nome",
     "Campo",
     "Data",
     "Dia",
-    "Horário",
-    "Frequência",
+    "Horario",
+    "Frequencia",
     "Canal",
-    "Ações",
+    "Acoes",
   ];
   expandedElement: AgendamentoAgendado | null | undefined;
 
-  constructor() {}
+  constructor() {
+    this.possuiDados = ELEMENT_DATA.length >= 1 ? true : false;
+  }
 
   ngOnInit(): void {}
+
+  getClass(status: any) {
+    return status === "Confirmado" ? "status-confirmado" : "status-cancelado";
+  }
 }
 
 export interface AgendamentoAgendado {
@@ -51,8 +60,8 @@ export interface AgendamentoAgendado {
   Campo: string;
   Data: string;
   Dia: string;
-  Horário: string;
-  Frequência: string;
+  Horario: string;
+  Frequencia: string;
   Canal: string;
   Telefone: string;
   ValorReserva: string;
@@ -62,27 +71,14 @@ const ELEMENT_DATA: AgendamentoAgendado[] = [
   {
     Id: 1,
     Status: "Confirmado",
-    Nome: "Tubarões",
-    Campo: "3",
-    Data: "16/03/2022",
+    Nome: "Atlatica",
+    Campo: "Atlantica 1",
+    Data: "12/02/2022",
     Dia: "Segunda",
-    Horário: "16:30 - 18:00",
-    Canal: "Manual",
-    Frequência: "Diária",
-    Telefone: "(81) 91234-1234",
-    ValorReserva: "350",
-  },
-  {
-    Id: 2,
-    Status: "Cancelado",
-    Nome: "Tubarões",
-    Campo: "3",
-    Data: "16/03/2022",
-    Dia: "Terça",
-    Horário: "16:30 - 18:00",
-    Canal: "Mobile",
-    Frequência: `Mensal`,
-    Telefone: "(81) 91234-1234",
-    ValorReserva: "250",
+    Horario: "10:00 - 12:00",
+    Frequencia: "Diária",
+    Canal: "Site",
+    Telefone: "(81) 99999-1234",
+    ValorReserva: "500.00",
   },
 ];

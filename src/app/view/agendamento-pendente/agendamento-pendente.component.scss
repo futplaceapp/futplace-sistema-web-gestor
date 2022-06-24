@@ -1,6 +1,7 @@
 .pendentes {
   width: 100%;
   margin-left: 5%;
+  margin-top: 10px;
 }
 
 .pendentes h1 {
@@ -13,9 +14,44 @@ table {
   width: 90%;
 }
 
-th {
+table th {
+  text-align: center;
+  
+}
+
+table td {
+  text-align: center;
+}
+
+.ponto {
+  height: 5px;
+  width: 5px;
+  background-color: #f0bf50;
+  border-radius: 50%;
+  display: inline-block;
+  position: absolute;
+  margin-top: 10px;
+}
+
+.btn-confirmar {
+  background-color: #26c602;
+  color: white;
+  margin-right: 10px;
+  width: 30%;
+  text-align: center;
+}
+
+.btn-cancelar {
   background-color: #4e4d4f;
   color: white;
+  width: 30%;
+  text-align: center;
+}
+
+th {
+  background-color: #595959;
+  color: white;
+  height: 20;
 }
 
 td {

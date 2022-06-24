@@ -3,6 +3,6 @@ export class MensagensUtil {
     "Por favor, informe seu usuário e senha para acessar o sistema.";
   public static ALERTA_LENGTH_SENHA_LOGIN =
     "Sua senha precisa ter no mínimo 08 caracteres.";
-  public static EM_CONSTRUCAO =
-    "Essa função encontra-se em construção.";
+  public static EM_CONSTRUCAO = "Essa função encontra-se em construção.";
+  public static SEM_HORARIO_DISPONIVEL = "Não existe horário disponível para esse dia.";
 }

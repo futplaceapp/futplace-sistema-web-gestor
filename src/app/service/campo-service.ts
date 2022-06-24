@@ -2,15 +2,13 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { environment } from "src/environments/environment";
 
-
 @Injectable({
   providedIn: "root",
 })
 export class CampoService {
+  constructor(private httpClient: HttpClient) {}
 
-  constructor(private httpClient: HttpClient){}
-
-  public async realizarCadastro(campo:any) {
+  public async realizarCadastro(campo: any) {
     let response: any;
     await this.httpClient
       .post<any>(`${environment.apiUrl}v1/campo`, campo, {
@@ -18,8 +16,12 @@ export class CampoService {
       })
       .toPromise()
       .then(
-        (data) => {response = data;},
-        (error) => {response = error;}
+        (data) => {
+          response = data;
+        },
+        (error) => {
+          response = error;
+        }
       );
     return response;
   }

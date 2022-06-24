@@ -1,7 +1,7 @@
 .agendados {
   width: 100%;
   margin-left: 5%;
-  margin-top: 2%;
+  margin-top: 3%;
   position: relative;
 }
 
@@ -16,16 +16,16 @@
   color: white;
 }
 
-::ng-deep .mat-tab-label-content {
+::ng-deep .tabs .mat-tab-label {
   color: white;
   font-size: medium;
   font-weight: bold;
 }
 
 .agendados .calendario {
-  position: fixed;
-  bottom: 39%;
-  right: 4%;
+  position: absolute;
+  bottom: 63%;
+  right: 10%;
   font-size: 18px;
   z-index: 2;
 }
@@ -34,6 +34,14 @@
   color: white;
 }
 
-::ng-deep .mat-button-wrapper {
+.calendario mat-date-range-input {
+  color: white;
+}
+
+.calendario .mat-date-range-input-start {
+  color: white;
+}
+
+.calendario mat-datepicker-toggle {
   color: white;
 }

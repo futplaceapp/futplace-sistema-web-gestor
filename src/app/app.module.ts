@@ -39,6 +39,19 @@ import { MenuComponent } from "./view/menu/menu.component";
 import { NovoAgendamentoComponent } from "./view/novo-agendamento/novo-agendamento.component";
 import { AgendamentoAgendadoComponent } from "./view/agendamento-agendado/agendamento-agendado.component";
 import { AgendamentoTabelaComponent } from "./view/agendamento-tabela/agendamento-tabela.component";
+import { FormsModule } from '@angular/forms';
+import { CurrencyMaskConfig, CurrencyMaskModule, CURRENCY_MASK_CONFIG } from 'ng2-currency-mask';
+
+export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
+  align: "left",
+  allowNegative: false,
+  decimal: ",",
+  precision: 2,
+  prefix: "R$ ",
+  suffix: "",
+  thousands: "."
+};
+
 
 @NgModule({
   declarations: [
@@ -54,6 +67,8 @@ import { AgendamentoTabelaComponent } from "./view/agendamento-tabela/agendament
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    CurrencyMaskModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
@@ -83,7 +98,7 @@ import { AgendamentoTabelaComponent } from "./view/agendamento-tabela/agendament
     MatNativeDateModule,
     NgxMaskModule.forRoot(),
   ],
-  providers: [{ provide: MAT_DATE_LOCALE, useValue: "pt-BR" }],
+  providers: [{ provide: MAT_DATE_LOCALE, useValue: "pt-BR" }, { provide: CURRENCY_MASK_CONFIG, useValue: CustomCurrencyMaskConfig }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

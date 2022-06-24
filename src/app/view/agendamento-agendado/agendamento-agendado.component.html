@@ -17,7 +17,7 @@
       <mat-date-range-picker #picker></mat-date-range-picker>
     </mat-form-field>
   </div>
-  <mat-tab-group appearance="outline" animationDuration="1000ms">
+  <mat-tab-group class="tabs" appearance="outline" animationDuration="1000ms">
     <mat-tab *ngFor="let item of campos" label="{{ item.nome }}">
       <app-agendamento-tabela></app-agendamento-tabela>
     </mat-tab>
