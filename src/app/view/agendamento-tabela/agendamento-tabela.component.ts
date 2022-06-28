@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { ChangeDetectorRef, Component, Input, OnInit } from "@angular/core";
 import {
   animate,
   state,
@@ -6,6 +6,8 @@ import {
   transition,
   trigger,
 } from "@angular/animations";
+import { AgendamentoConfirmado } from "src/app/model/AgendamentoConfirmado";
+import { AgendamentoService } from "src/app/service/agendamento-service";
 
 @Component({
   selector: "app-agendamento-tabela",
@@ -23,62 +25,43 @@ import {
   ],
 })
 export class AgendamentoTabelaComponent implements OnInit {
-  @Input() listaAgendamentos: any[] | undefined;
+  @Input() campo: any = null;
+  @Input() parceiro: any = null;
+
+  listaAgendamentos: AgendamentoConfirmado[] = new Array();
   possuiDados: boolean = false;
 
   campos: any;
-  dataSource = ELEMENT_DATA;
+  dataSource = this.listaAgendamentos;
   columnsToDisplay = [
-    "Id",
-    "Status",
-    "Nome",
-    "Campo",
-    "Data",
-    "Dia",
-    "Horario",
-    "Frequencia",
-    "Canal",
-    "Acoes",
+    "id",
+    "status",
+    "nome",
+    "campo",
+    "data",
+    "dia",
+    "horario",
+    "tipoAgendamento",
+    "canal",
+    "acoes",
   ];
-  expandedElement: AgendamentoAgendado | null | undefined;
+  expandedElement: AgendamentoConfirmado | null | undefined;
 
-  constructor() {
-    this.possuiDados = ELEMENT_DATA.length >= 1 ? true : false;
+  constructor(private agendamentoService: AgendamentoService, private cdr : ChangeDetectorRef) {
+    this.possuiDados = this.listaAgendamentos.length >= 1 ? true : false;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.campo, this.parceiro);
+  }
+
+  async ngOnChanges() {
+    this.listaAgendamentos = await this.agendamentoService.agendamentosParceiroCampo(this.campo.id, this.parceiro.idParceiro);
+    this.possuiDados = this.listaAgendamentos.length >= 1 ? true : false;
+    this.dataSource = this.listaAgendamentos;
+  }
 
   getClass(status: any) {
     return status === "Confirmado" ? "status-confirmado" : "status-cancelado";
   }
 }
-
-export interface AgendamentoAgendado {
-  Id: number;
-  Status: string;
-  Nome: string;
-  Campo: string;
-  Data: string;
-  Dia: string;
-  Horario: string;
-  Frequencia: string;
-  Canal: string;
-  Telefone: string;
-  ValorReserva: string;
-}
-
-const ELEMENT_DATA: AgendamentoAgendado[] = [
-  {
-    Id: 1,
-    Status: "Confirmado",
-    Nome: "Atlatica",
-    Campo: "Atlantica 1",
-    Data: "12/02/2022",
-    Dia: "Segunda",
-    Horario: "10:00 - 12:00",
-    Frequencia: "Diária",
-    Canal: "Site",
-    Telefone: "(81) 99999-1234",
-    ValorReserva: "500.00",
-  },
-];

@@ -1,10 +1,21 @@
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  TemplateRef,
+  ViewChild,
+  ViewContainerRef,
+  ViewRef,
+} from "@angular/core";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { SnackBarUtil } from "src/app/util/SnackBarUtil";
 import { MensagensUtil } from "src/app/util/MensagensUtil";
 
 import { AgendamentoService } from "src/app/service/agendamento-service";
 import * as moment from "moment";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-novo-agendamento",
@@ -38,8 +49,10 @@ export class NovoAgendamentoComponent implements OnInit {
 
   constructor(
     private agendamentoService: AgendamentoService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private route: Router
   ) {
+    this.route.routeReuseStrategy.shouldReuseRoute = () => false;
     moment.locale("pt-br");
     this.snackBarUtil = new SnackBarUtil(this.snackBar);
   }
@@ -107,7 +120,8 @@ export class NovoAgendamentoComponent implements OnInit {
       this.horarioSelecionado,
       1
     );
-    console.log(response);
+
+    this.route.navigate(["/home"])
   }
 
   async onChangeHorario() {

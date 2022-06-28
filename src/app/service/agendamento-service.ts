@@ -2,6 +2,7 @@ import { NumberSymbol } from "@angular/common";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { environment } from "src/environments/environment";
+import { AgendamentoConfirmado } from "../model/AgendamentoConfirmado";
 
 @Injectable({
   providedIn: "root",
@@ -83,6 +84,28 @@ export class AgendamentoService {
     await this.httpClient
       .get<any>(
         `${environment.apiUrl}v1/agendamento/valorDefault/${dataAgendamento}/${idParceiro}/${idCampo}/${duracaoPartida}/${idTipoAgendamento}/${horarioPartida}`
+      )
+      .toPromise()
+      .then(
+        (data) => {
+          response = data;
+        },
+        (error) => {
+          response = error;
+        }
+      );
+    return response;
+  }
+
+  //valorDefault/{dataAgendamento}/{idParceiro}/{idCampo}/{duracaoPartida}/{idTipoAgendamento}/{horarioPartida}"
+  public async agendamentosParceiroCampo(
+    idParceiro: string,
+    idCampo: string
+  ) {
+    let response: any;
+    await this.httpClient
+      .get<AgendamentoConfirmado>(
+        `${environment.apiUrl}v1/agendamento/parceiro/${idParceiro}/${idCampo}`
       )
       .toPromise()
       .then(

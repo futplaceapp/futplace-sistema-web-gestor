@@ -19,7 +19,7 @@
   </div>
   <mat-tab-group class="tabs" appearance="outline" animationDuration="1000ms">
     <mat-tab *ngFor="let item of campos" label="{{ item.nome }}">
-      <app-agendamento-tabela></app-agendamento-tabela>
+      <app-agendamento-tabela [campo]="item" [parceiro]="userData2"></app-agendamento-tabela>
     </mat-tab>
   </mat-tab-group>
 </div>

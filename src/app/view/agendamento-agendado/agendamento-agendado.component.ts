@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges } from "@angular/core";
 import * as moment from "moment";
+import { AgendamentoConfirmado } from "src/app/model/AgendamentoConfirmado";
 
 @Component({
   selector: "app-agendamento-agendado",
@@ -7,18 +8,22 @@ import * as moment from "moment";
   styleUrls: ["./agendamento-agendado.component.scss"],
 })
 export class AgendamentoAgendadoComponent implements OnChanges {
+  
   @Input() userData2: any = {};
   campos: any = new Array();
   diaAtual: any;
   contadorDias: number = 0;
+  listaAgendamentos : AgendamentoConfirmado[] = new Array();
 
   constructor() {
     moment.locale("pt-br");
     this.campos.push({ nome: "Teste" });
+    this.campos.push({ nome: "Teste 2" });
+    this.campos.push({ nome: "Teste 3" });
     this.dataAtual();
   }
 
-  ngOnChanges(): void {
+  async ngOnChanges() {
     if (this.userData2.listaCampos) this.campos = this.userData2.listaCampos;
   }
 
