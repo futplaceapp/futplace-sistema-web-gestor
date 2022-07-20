@@ -11,9 +11,13 @@
   </head>
 
   <body>
-    <mat-spinner class="loading"></mat-spinner>
-    <mat-drawer-container class="home">
-      <mat-drawer mode="side" opened>
+    <div class="header">
+      <button (click)="exibirMenu = !exibirMenu" mat-raised-button>
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+    <mat-drawer-container class="home" autosize>
+      <mat-drawer mode="side" [opened]="exibirMenu">
         <app-menu [userData1]="parceiroLogado"></app-menu>
       </mat-drawer>
       <mat-drawer-content>

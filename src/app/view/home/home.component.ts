@@ -1,5 +1,8 @@
-import { ChangeDetectorRef, Component, OnInit } from "@angular/core";
-import { ParceiroService } from "src/app/service/parceiro-service";
+import {
+  Component,
+  HostListener,
+  OnInit,
+} from "@angular/core";
 
 @Component({
   selector: "app-home",
@@ -11,8 +14,19 @@ export class HomeComponent implements OnInit {
   usuario: any = {};
   listaCampo: any;
   exibirModalNovoAgendamento: boolean = false;
+  exibirMenu: boolean = true;
 
   constructor() {}
+
+  @HostListener("window:resize", ["$event"])
+  onResize(event: { target: { innerWidth: any } }) {
+    let largura = event.target.innerWidth;
+
+    if(largura < 868)
+      this.exibirMenu = false;
+    else
+      this.exibirMenu = true;
+  }
 
   async ngOnInit() {
     this.usuario = JSON.parse(sessionStorage.usuario);

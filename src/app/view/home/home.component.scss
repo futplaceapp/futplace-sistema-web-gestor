@@ -28,3 +28,23 @@
   //overflow-y: hidden; // hide vertical
   overflow-x: hidden; // hide horizontal
 }
+
+@media (min-width: 868px) {
+  .header {
+    display: none;
+  }
+}
+
+@media (max-width: 868px) {
+  .header {
+    background-color: white;
+  }
+}
+
+@media (max-width: 450px) {
+  .header {
+    background-color: white;
+  }
+}
+
+
